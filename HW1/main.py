@@ -22,7 +22,7 @@ for i in range(height):
     for j in reversed(range(width)):
         lrimg.append(img[i][j])
 lrimg = np.asarray(lrimg).reshape(height, width)
-cv2.imwrite("righside_left.bmp", udimg)
+cv2.imwrite("righside_left.bmp", lrimg)
 del lrimg
 
 # Diagonal Flip
@@ -33,6 +33,6 @@ for i in range(height):
             break
         else:
             dfimg[i][j] = dfimg[j][i]
-cv2.imwrite("diagonal_flip.bmp", udimg)
+cv2.imwrite("diagonal_flip.bmp", dfimg)
 del dfimg
 ##################################################
