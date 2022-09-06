@@ -1,6 +1,7 @@
 import os
 import cv2
 import numpy as np
+from scipy import ndimage
 import matplotlib.pyplot as plt
 
 img = cv2.imread("lena.bmp", cv2.IMREAD_GRAYSCALE)
@@ -29,7 +30,7 @@ cv2.imwrite("res/righside_left.bmp", lrimg)
 del lrimg
 
 # Diagonal Flip
-dfimg = img
+dfimg = np.copy(img)
 for i in range(height):
     for j in range(width):
         if i == j:
@@ -38,4 +39,26 @@ for i in range(height):
             dfimg[i][j] = dfimg[j][i]
 cv2.imwrite("res/diagonal_flip.bmp", dfimg)
 del dfimg
+##################################################
+
+##################### Part 2 #####################
+# Rotate 45 degreees clockwise
+rotateimg = ndimage.rotate(img, -45)
+rheight, rwidth = rotateimg.shape
+for i in range(rheight):
+    for j in range(rwidth):
+        if rotateimg[i][j] == 0:
+            rotateimg[i][j] = 255
+cv2.imwrite("res/rotated.bmp", rotateimg)
+del rotateimg, rheight, rwidth
+
+# Shrink image
+shrink = cv2.resize(img, (int(height/2), int(width/2)), cv2.INTER_AREA)
+cv2.imwrite("res/shrinked.bmp", shrink)
+del shrink
+
+# Binarize image
+_, binarize = cv2.threshold(img, 128, 255, cv2.THRESH_BINARY)
+cv2.imwrite("res/binarize.bmp", binarize)
+del binarize
 ##################################################
