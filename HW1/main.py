@@ -36,7 +36,9 @@ for i in range(height):
         if i == j:
             break
         else:
+            temp = dfimg[i][j]
             dfimg[i][j] = dfimg[j][i]
+            dfimg[j][i] = temp
 cv2.imwrite("res/diagonal_flip.bmp", dfimg)
 del dfimg
 ##################################################
