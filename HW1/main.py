@@ -14,7 +14,7 @@ if not os.path.exists("res"):
 # Up-Down Flip
 udimg = []
 for i in reversed(range(height)):
-    for j in reversed(range(width)):
+    for j in range(width):
         udimg.append(img[i][j])
 udimg = np.asarray(udimg).reshape(height, width)
 cv2.imwrite("res/upside_down.bmp", udimg)
