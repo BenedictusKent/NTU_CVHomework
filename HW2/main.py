@@ -1,5 +1,7 @@
 import os
 import cv2
+import sys
+import time
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -36,6 +38,7 @@ plt.savefig('res/histogram.png')
 del data, pixel, count, fig
 
 # Connected Components
+start_time = time.time()
 temp = np.copy(binaryimg)
 value = 1
 # First pass
@@ -44,49 +47,86 @@ for i in range(height):
         if temp[i][j] == 255:
             temp[i][j] = value
             value += 1
-# Top down
-for i in range(height):
-    for j in range(width):
-        if temp[i][j] > 0:
-            top = -1
-            left = -1
-            # check top
-            if i-1 >= 0:
-                if temp[i-1][j] > 0:
-                    top = temp[i-1][j]
-            # check left
-            if j-1 >= 0:
-                if temp[i][j-1] > 0:
-                    left = temp[i][j-1]
-            # check min neighbours
-            if top == -1 and left == -1:
-                pass
-            elif top == -1:
-                temp[i][j] = left
-            elif left == -1:
-                temp[i][j] = top
-            else:
-                temp[i][j] = min(top, left)
-# Bottom up
-for i in reversed(range(height)):
-    for j in reversed(range(width)):
-        if temp[i][j] > 0:
-            bottom = -1
-            right = -1
-            # check bottom
-            if i+1 < height:
-                if temp[i+1][j] > 0:
-                    bottom = temp[i+1][j]
-            # check right
-            if j+1 < width:
-                if temp[i][j+1] > 0:
-                    right = temp[i][j+1]
-            # check min neighbours
-            if bottom == -1 and right == -1:
-                pass
-            elif bottom == -1:
-                temp[i][j] = right
-            elif right == -1:
-                temp[i][j] = bottom
-            else:
-                temp[i][j] = min(bottom, right)
+# Iterations
+change = True
+while change:
+    change = False
+    # Top Down
+    for i in range(height):
+        for j in range(width):
+            if temp[i][j] > 0:
+                # check top
+                if (i > 0) and (temp[i-1][j] > 0):
+                    if temp[i][j] != temp[i-1][j]:
+                        temp[i][j] = min(temp[i][j], temp[i-1][j])
+                        change = True
+                # check left
+                if (j > 0) and (temp[i][j-1] > 0):
+                    if temp[i][j] != temp[i][j-1]:
+                        temp[i][j] = min(temp[i][j], temp[i][j-1])
+                        change = True
+                # check bottom
+                if (i+1 < height) and (temp[i+1][j] > 0):
+                    if temp[i][j] != temp[i+1][j]:
+                        temp[i][j] = min(temp[i][j], temp[i+1][j])
+                        change = True
+                # check right
+                if (j+1 < height) and (temp[i][j+1] > 0):
+                    if temp[i][j] != temp[i][j+1]:
+                        temp[i][j] = min(temp[i][j], temp[i][j+1])
+                        change = True
+    # Bottom up
+    for i in reversed(range(height)):
+        for j in reversed(range(width)):
+            if temp[i][j] > 0:
+                # check top
+                if (i > 0) and (temp[i-1][j] > 0):
+                    if temp[i][j] != temp[i-1][j]:
+                        temp[i][j] = min(temp[i][j], temp[i-1][j])
+                        change = True
+                # check left
+                if (j > 0) and (temp[i][j-1] > 0):
+                    if temp[i][j] != temp[i][j-1]:
+                        temp[i][j] = min(temp[i][j], temp[i][j-1])
+                        change = True
+                # check bottom
+                if (i+1 < height) and (temp[i+1][j] > 0):
+                    if temp[i][j] != temp[i+1][j]:
+                        temp[i][j] = min(temp[i][j], temp[i+1][j])
+                        change = True
+                # check right
+                if (j+1 < height) and (temp[i][j+1] > 0):
+                    if temp[i][j] != temp[i][j+1]:
+                        temp[i][j] = min(temp[i][j], temp[i][j+1])
+                        change = True
+print(str(time.time() - start_time), "seconds")
+# Count pixel value
+pixel = []
+unique, counts = np.unique(temp, return_counts=True)
+for i in range(len(counts)):
+    if counts[i] > 500 and unique[i] != 0:
+        pixel.append(unique[i])
+# Bounding box
+binaryimg = binaryimg.astype('uint8')
+img = cv2.cvtColor(binaryimg, cv2.COLOR_GRAY2BGR)
+for pixelvalue in pixel:
+    minpoint = [sys.maxsize, sys.maxsize]
+    maxpoint = [-1, -1]
+    xsum = ysum = 0
+    for i in range(height):
+        for j in range(width):
+            if temp[i][j] == pixelvalue:
+                if i < minpoint[0]:
+                    minpoint[0] = i
+                if j < minpoint[1]:
+                    minpoint[1] = j
+                if i > maxpoint[0]:
+                    maxpoint[0] = i
+                if j > maxpoint[1]:
+                    maxpoint[1] = j
+    cv2.rectangle(img, (minpoint[1], minpoint[0]), (maxpoint[1], maxpoint[0]), (255, 0, 0), 2)
+    xpoint = int((minpoint[0] + maxpoint[0]) / 2)
+    ypoint = int((minpoint[1] + maxpoint[1]) / 2)
+    cv2.line(img, (ypoint-10, xpoint), (ypoint+10, xpoint), (0, 0, 255), 2)
+    cv2.line(img, (ypoint, xpoint-10), (ypoint, xpoint+10), (0, 0, 255), 2)
+cv2.imwrite("res/connected_components.bmp", img)
