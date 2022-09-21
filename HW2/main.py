@@ -102,20 +102,24 @@ while change:
 print(str(time.time() - start_time), "seconds")
 # Count pixel value
 pixel = []
+pixelcount = []
 unique, counts = np.unique(temp, return_counts=True)
 for i in range(len(counts)):
     if counts[i] > 500 and unique[i] != 0:
         pixel.append(unique[i])
+        pixelcount.append(counts[i])
 # Bounding box
 binaryimg = binaryimg.astype('uint8')
 img = cv2.cvtColor(binaryimg, cv2.COLOR_GRAY2BGR)
-for pixelvalue in pixel:
+for x in range(len(pixel)):
     minpoint = [sys.maxsize, sys.maxsize]
     maxpoint = [-1, -1]
-    xsum = ysum = 0
+    rsum = csum = 0
     for i in range(height):
         for j in range(width):
-            if temp[i][j] == pixelvalue:
+            if temp[i][j] == pixel[x]:
+                csum += i
+                rsum += j
                 if i < minpoint[0]:
                     minpoint[0] = i
                 if j < minpoint[1]:
@@ -125,8 +129,10 @@ for pixelvalue in pixel:
                 if j > maxpoint[1]:
                     maxpoint[1] = j
     cv2.rectangle(img, (minpoint[1], minpoint[0]), (maxpoint[1], maxpoint[0]), (255, 0, 0), 2)
-    xpoint = int((minpoint[0] + maxpoint[0]) / 2)
-    ypoint = int((minpoint[1] + maxpoint[1]) / 2)
+    csum /= pixelcount[x]
+    rsum /= pixelcount[x]
+    xpoint = int(csum)
+    ypoint = int(rsum)
     cv2.line(img, (ypoint-10, xpoint), (ypoint+10, xpoint), (0, 0, 255), 2)
     cv2.line(img, (ypoint, xpoint-10), (ypoint, xpoint+10), (0, 0, 255), 2)
 cv2.imwrite("res/connected_components.bmp", img)
