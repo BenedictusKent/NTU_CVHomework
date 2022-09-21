@@ -114,7 +114,8 @@ img = cv2.cvtColor(binaryimg, cv2.COLOR_GRAY2BGR)
 for x in range(len(pixel)):
     minpoint = [sys.maxsize, sys.maxsize]
     maxpoint = [-1, -1]
-    rsum = csum = 0
+    rsum = 0
+    csum = 0
     for i in range(height):
         for j in range(width):
             if temp[i][j] == pixel[x]:
