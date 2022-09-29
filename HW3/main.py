@@ -46,7 +46,6 @@ del data, pixel, count, fig
 # Part C
 equalized_array = [0] * 256
 hist = np.bincount(imgdiv3.flatten(), minlength=256)
-histcum = np.cumsum(hist)
 totalpixel = height * width
 temp = 0
 for i in range(256):
