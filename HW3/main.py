@@ -21,6 +21,7 @@ count = list(data.values())
 fig = plt.figure(figsize=(10,5))
 plt.bar(pixel, count, color='black')
 plt.savefig('res/original_histogram.png')
+cv2.imwrite('res/original_lena.png', img)
 del data, pixel, count, fig
 
 # Part B
@@ -41,6 +42,7 @@ fig = plt.figure(figsize=(10,5))
 plt.xlim([0, 255])
 plt.bar(pixel, count, color='black')
 plt.savefig('res/div3_histogram.png')
+cv2.imwrite('res/div3_lena.png', imgdiv3)
 del data, pixel, count, fig
 
 # Part C
