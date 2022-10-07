@@ -16,7 +16,7 @@ def dilationFunc(kernel, original):
                     for y in range(kernel.shape[1]):
                         xdest = i + x - ycenter
                         ydest = j + y - xcenter
-                        if (0 <= xdest < height) and (0 <= ydest < width):
+                        if (0 <= xdest < height) and (0 <= ydest < width) and (kernel[x][y] == 1):
                             dilation[xdest][ydest] = 255
     return dilation
 
