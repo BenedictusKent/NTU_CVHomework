@@ -1,3 +1,4 @@
+from contextlib import closing
 from nis import match
 import os
 import cv2
@@ -77,9 +78,15 @@ del img
 # Dilation
 dilation = dilationFunc(kernel, binary)
 cv2.imwrite("res/dilation.bmp", dilation)
-del dilation
 
 # Erosion
 erosion = erosionFunc(kernel, binary)
 cv2.imwrite("res/erosion.bmp", erosion)
-del erosion
+
+# Opening
+opening = dilationFunc(kernel, erosion)
+cv2.imwrite("res/opening.bmp", opening)
+
+# Closing
+closing = erosionFunc(kernel, dilation)
+cv2.imwrite("res/closing.bmp", closing)
