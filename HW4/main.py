@@ -110,12 +110,22 @@ closing = erosionFunc(kernel, dilation, ycenter, xcenter)
 cv2.imwrite("res/closing.bmp", closing)
 
 # Hit and miss
-kernel = np.array([
-    [1, 1],
-    [0, 1]
+kernel_j = np.array([
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [1, 1, 0, 0, 0],
+    [0, 1, 0, 0, 0],
+    [0, 0, 0, 0, 0],
 ])
-erosion1 = erosionFunc(kernel, binary, 1, 0)
+kernel_k = np.array([
+    [0, 0, 0, 0, 0],
+    [0, 1, 1, 0, 0],
+    [0, 0, 1, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+])
+erosion1 = erosionFunc(kernel_j, binary, 2, 1)
 comp = complementFunc(binary)
-erosion2 = erosionFunc(kernel, comp, 0, 1)
+erosion2 = erosionFunc(kernel_k, comp, 2, 1)
 hitmiss = intersectFunc(erosion1, erosion2)
 cv2.imwrite("res/hitmiss.bmp", hitmiss)
