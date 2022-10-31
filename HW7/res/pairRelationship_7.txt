@@ -1,0 +1,64 @@
+q      q        qq          qqqqqqqq     q                  q  q
+ q    q           qqq   qqqq  q     qq    qq        q         q 
+  q  q          q q  qqq q q  q  qqqqq      q               qq  
+   qq           q q    q q qqqqqq            q              q   
+   qq            qq q  q qq        q q        q    q       q    
+  q q            q  q  qq q         q          qq         q     
+  q  q             qq q   q        qqqq      q   qq             
+ q   q              qqq   q                  q    q             
+ q    q                qqq qq               q      q            
+q    qq                  q   qq             q      q            
+qq   qq                  q    q            q       q            
+q    qq                  q           q     qq      q           q
+     qq                q q                 qq      q           q
+     qq                 qqqqqqqqpp         qq     q           q 
+     qq         q     qqq      pqqp        qq                qq 
+     qq         q    qq         ppqp        q      q          q 
+     qq         q    q         q  p q       q     q          q  
+     qq         q           qqq      q      q    qq         qq  
+     qq        qq         qqq         q     q   q            q  
+     qq        q    q qqqqq            q    q  q   q        q   
+     qq         q    qq                 q  q q     q        q   
+     qq         q    q   q              qq       q         qq   
+     qq          q    q  q              q         q         q   
+     qq         qq   qqq q             qq        q         q    
+     qq          q  q  qqq            qq       qq          q    
+     qq          qqq   q              q       q           qq    
+     qq          q  q  q              q                   qq    
+     qq          q   q      q        qq      q       q     q    
+     qq          q                qqqqq              q     q    
+     qq          q  q            q    q                   q     
+     qq           q            qq     qqqq    q          qq     
+     qq           q           qq      q       q          qq     
+     qq         q             q       q       q           q     
+     qq        q  q        q q    q   q   q   q          q      
+     qq       q             q     qqq     q   q          q      
+     qq     qq  q    q     q   q         q    q          q      
+     qq      q      qq    qq   q    q  q      q         qq      
+     qq    q              q        q   qq     q         qq      
+     qq    q    q     q  qq     q q     q      q        qq      
+     qq    q             q       q      q      q       q q      
+     qq       q q      qq       q    q  q      q      q   q     
+     qq                q         q   q  q      q      q   q     
+     qq          q   q q        q  qqq qq      q     q     q    
+     qq          q  qq       q  q     q q      q    qq     q    
+     qq   q      q qq           q     q q          qq       q   
+     qq        q  q  q          qq    q           q         q   
+     qq             q            qq  qq          q   q      q   
+     qq         q                 qq q          q    q      q   
+     q                                         q      q    q    
+      q        q   qq          qqqqqq          q          qq    
+q     q  q     q    q               q          q          q     
+qq    qq           q                 q     q    q   q    q      
+ qq   qq           q                 q           qq     qq      
+  q   q             q q        q     q           qq     qq      
+  q   qq     q        q              qp  q       q   qqqq       
+  q   q            qqq               pqp         qq    qq       
+  q   qq                    q        pqp        q  q   qq       
+  qq  qq             qq              qpq           qq  q        
+  qq  q           q                qq   qq            q         
+  qq  q                           q       q                     
+  qq  q             q           qq         q         q q        
+  qq  q                        q            qq       q          
+  qq  q                     q                 q                 
+  qq q q        q            qq                q                

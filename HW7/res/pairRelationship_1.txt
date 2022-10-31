@@ -1,0 +1,64 @@
+qppppppq        qqppppppppppqqqqqqqq     qppppppppppp       q  q
+pqqqqqqp         pqqqqqqqqqqp q pp  qq   pqqqqqqqqqqqp        q 
+pqqqqqqp        q ppqqqqqqpp  qpqqpqqq    pqqqqqqqqqqp      qq  
+pqqqqqqp        q q pqqqpp qqqpqqqp       pqqqqqqqqqqqp     q   
+pqqqqqqp         qq qppp qq    pqp q q    pqqqqqqqqqqqqp   q    
+pqqqqqqp         q  q  qq p     p   q     pqqqqqqqqqqqqp  q     
+pqqqqqqp           qp q  pqpppp    qqqq   pqqqqqqqqqqqqqp       
+pqqpqqqp           pqpq pqqqqqqppp        pqqqqqqqqqqqqqp       
+pqp pqqp            p  qpqqqqqqqqqp       pqqqqqqqqqqqqqp       
+qp  pqqp                 ppqqqqqqqqp      pqqqpqqqqqqqqp        
+qq  pqqp                 q pqqqqqqqqpp    pqqp pqqqqqqp         
+q   pqqp                 p pqqqqqqqqqqp   pqqp  pqqqqp         q
+    pqqp               qpqpqqqqqqqqqqqp   pqqp   pqqqp        pq
+    pqqp               pqqqqqqqqqqqqqqqp  pqqp   pqqp        pqp
+    pqqp        q     qpqpqqqqqqqqqqqqqqp pqqp    pp        pqqp
+    pqqp        q    qq p pqqqqqqqqqqqqqqp pqp  ppqqp       pqqp
+    pqqp        q    q   pqqqqqqqqqqqqqqqp pqp pqqqqp      pqqqp
+    pqqp        q       pqqqqqqqqqqqqqqqqqpqqqpqqqqqp     pqqqqp
+    pqqp       qq      pqqqqqqqqqqqqqqqqqqqqqqqqqqqp      pqqqqp
+    pqqp       qp   q qpqqqqqqqqqqqqqqqqqqqqqqqqqqpq     pqqqqqp
+    pqqp       pqp   qq pqqqqqqqqqqqqqqqqqqqqqqqqp q     pqqqqqp
+    pqqp       pqqp  q pqqqpqpqqppqppqqqqqqqqqqqpq      pqqqqqqp
+    pqqp       pqqqp  q pqp p pp  p  pqqqqqqqqpp  q     pqqqqqqp
+    pqqp       pqqp  qqq p          pqqqqqqqpp   q     pqqqqqqqp
+    pqqp        pqp q  qqq         pqqqqqqpp  pqq      pqqqqqqqp
+    pqqp        pqpq   q           pqqqqqp   pqp      pqqqqqqqqp
+    pqqp         p  q  q          pqqqqqqqp   p       pqqqqqqqqp
+    pqqp         q   q      q    pqqqqqqqqp  q       q pqqqqqqqp
+    pqqp         q              pqqqqqqqqqp          qpqqqqqqqqp
+    pqqp         q  q          pqqqqqqqqqqp          pqqqqqqqqqp
+    pqqp          q           pqqqppqqqqqqqp  q     pqqqqqqqqqqp
+    pqqp        p q          pqqpp  pqqqqqp   q     pqqqqqqqqqqp
+    pqqp       pqp           pqp     pqqpp    q     pqqqqqqqqqqp
+    pqqp      pqp q        qpqp   q  pqp  q   q    pqqqqqqqqqqqp
+    pqqp      qp           pqp p  qqq pp  q   q    pqqqqqqqqqqqp
+    pqqp    qq  q    q     qp pqp  pp pqpq    q    pqqqqqqqqqqqp
+    pqqp     q      qq    qq  pqqppqqpqqqp    q   pqqqqqqqqqqqqp
+    pqqp   q              q   pqqqqqqpqqqqp   q   pqqqqqqqqqqqqp
+    pqqp   q    q     q  qq  pqqqqqqp pqqqp    q  pqqqqqqqqqqqqp
+    pqqp   q             q    pqqqqqp pqqqp    q pqqqqqqqqqqqqqp
+    pqqp      q q      qq     pqqqqp q pqp     q pqqqqqqqqqqqqqp
+    pqqp               q      pqqqqqpp pqp     q pqqqqqqqqqqqqqp
+    pqqp         q   q q     pqqqqqqqqpqqp     q pqqqqqqqqqqqqqp
+    pqqp         q  qq       qpqqqppppqpp      qpqqqqqqqqqqqqqqp
+    pqqp  q      q qq          pqp    p q      pqqqqqqqqpqqqqqqp
+    pqqp       q  q  q         pqqp  pqp       pqqqqqqqp pqqqqqp
+    pqqp            q           pqqppqqp       pqqqqqqqp pqqqqqp
+    pqqp        q                pqqqqp        pqqqqqqqp pqqqqqp
+    pqqp                          pqqqp        qpppppqqp pqqqqp 
+    pqqqp      q   qq          qqpqqqqqp       q     pp pqqqqp  
+q    pqp q     q    q            pqqqqqqpp     qppp     pqqqp   
+qq   pqqp          q             pqqqqqqqqpq   pqqqpq   pqqp    
+ qq  pqqp          q             pqqqqqqqqqp   pqqqqp  pqqp     
+  q  pqp            q q        qpqqqqqqqqqqqp  pqqqqp  pqqp     
+  q  pqqp    q        q        pqqqqqqqqqqqqqp pqqqp qpqqp      
+  q  pqp           qqq         pqqqqqqqqqqqqqp pqqqqp pqqp      
+  q  pqqp                   q  pqqqqqqqqqqqqqp pqqqqp pqqp      
+  qq pqqp            qq        pqqqqqqqqqqqqqp  pppqqpqqp       
+  qq pqp          q           pqqqqqqqqqqqqqqqp    ppqqqp       
+  qq pqp                      pqqqqqqqqqqqqqqqp      pqp        
+  qq pqp            q        pqqqqqqqqqqqqqqqqp      qpq        
+  qq pqp                     pqqqqqqqqqqqqqqqqqp     q          
+  qq pqp                    q pqqqqqqqqqqqqqqqqp                
+  qq qpq        q            qqppppppppppppppppq                

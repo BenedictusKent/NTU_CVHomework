@@ -1,0 +1,64 @@
+b      b        bb          bbbbbbbb     b                  b  b
+ b    b           bbb   bbbb  b     bb    bb        b         b 
+  b  b          b b  bbb b b  b  bbbbb      b               bb  
+   bb           b b    b b bbbbbb            bbbbbbb        b   
+   bb            bb b  b bb        b b       biiiiiib      b    
+  b b            b  b  bb b         b        biiiiiib     b     
+  b  b             bb b   b        bbbb      bbiiiiiib          
+ b   b              bbb   b                  b biiiiib          
+ b    b                bbb bb               b   biiiib          
+b    bb                  b   bb             b    biib           
+bb   bb                  b    bbbb         b      bb            
+b    bb                  b    biiib  b     bb      b           b
+     bb                b b   biiiiib       bb      b           b
+     bb                 bbbbbiiiiiiib      bb     b           b 
+     bb         b     bbb   biiiiiiiib     bb                bb 
+     bb         b    bb      biiiiiiiib     b      b          b 
+     bb         b    b      biiiiiiiiib     b     b          b  
+     bb         b          biiiiiiiiiiib    b    bb         bb  
+     bb        bb         bbibiibbibbiiib   b   b            b  
+     bb        b    b bbbbb b bb  b  biiib bib b   b        b   
+     bb         b    bb               biiibibb     b        b   
+     bb         b    b   b             biibb     b         bb   
+     bb          b    b  b              bb        b        bb   
+     bb         bb   bbb b             bb        b        bib   
+     bb          b  b  bbb            bb       bb         bib   
+     bb          bbb   b              b       b          biib   
+     bb          b  b  b             bib                 biib   
+     bb          b   b      b       biib     b       b    bib   
+     bb          b                bbbiib             b   biib   
+     bb          b  b            b   bib                biiib   
+     bb           b            bb     bbbb    b        biiiib   
+     bb           b           bb      b       b        biiiib   
+     bb         b             b       b       b        biiiib   
+     bb        b  b        b b    b   b   b   b       biiiiib   
+     bb       b             b     bbb     b   b       biiiiib   
+     bb     bb  b    b     b   b         b    b       biiiiib   
+     bb      b      bb    bb   b    b  b      b      biiiiiib   
+     bb    b              b        b   bb     b      biiiiiib   
+     bb    b    b     b  bb     b b     b      b     biiiiiib   
+     bb    b             b       b      b      b    biiiiiiib   
+     bb       b b      bb       b    b  b      b    biiiiiiib   
+     bb                b         b   b  b      b    biiibiiib   
+     bb          b   b b        b  bbb bb      b    biib biib   
+     bb          b  bb       b  b     b b      b   biib   bib   
+     bb   b      b bb           b     b b         biib     bb   
+     bb        b  b  b          bb    b           bbb       b   
+     bb             b            bb  bb          b   b      b   
+     bb         b                 bb b          b    b      b   
+     b                                         b      b    b    
+      b        b   bb          bbbbbb          b          bb    
+b     b  b     b    b               bb         b          b     
+bb    bb           b                bib    b    b   b    b      
+ bb   bb           b                biib         bb     bb      
+  b   b             b b        b   biiiibb       bb     bb      
+  b   bb     b        b           biiiiiiib      b   bbbb       
+  b   b            bbb            biiiiiiib      bb    bb       
+  b   bb                    b     biiiiiiib     b  b   bb       
+  bb  bb             bb           biiiiiiib        bb  b        
+  bb  b           b              biiiiiiiiib          b         
+  bb  b                          biiiiiiiiib                    
+  bb  b             b           bbbbbbbbbbbb         b b        
+  bb  b                        b            bb       b          
+  bb  b                     b                 b                 
+  bb b b        b            bb                b                
