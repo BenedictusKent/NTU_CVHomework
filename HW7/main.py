@@ -49,15 +49,23 @@ def yokoiNumber(img):
 
 # Mark Pair Relationship Functions ###########################################
 def markPair(img):
-    pad = np.zeros((img.shape[0]+2, img.shape[1]+2), dtype=int)
-    pad[1:-1, 1:-1] = img
     pair_img = np.zeros(img.shape, dtype=int)
-    for i in range(1, pad.shape[0]-1):
-        for j in range(1, pad.shape[1]-1):
-            if(pad[i][j] != 1):
-                pair_img[i-1][j-1] = 0
-            elif (pad[i][j+1] == 1 or pad[i-1][j] == 1 or pad[i][j-1] == 1 or pad[i+1][j] == 1):
-                pair_img[i-1][j-1] = 1
+    for i in range(img.shape[0]):
+        for j in range(img.shape[1]):
+            if img[i][j] != 1:
+                pair_img[i][j] = 0
+            else:
+                top = down = left = right = False
+                if j+1 < img.shape[1]:
+                    right = True if img[i][j+1] == 1 else False
+                if i-1 > 0:
+                    top = True if img[i-1][j] == 1 else False
+                if j-1 > 0:
+                    left = True if img[i][j-1] == 1 else False
+                if i+1 < img.shape[0]:
+                    down = True if img[i+1][j] == 1 else False
+                if (top or down or left or right):
+                    pair_img[i][j] = 1
     return pair_img
 ##############################################################################
 
