@@ -33,7 +33,6 @@ def fFunc(a1, a2, a3, a4):
         return [a1, a2, a3, a4].count('q')
 
 def yokoiNumber(img):
-    # result = np.full(img.shape, ' ')
     result = np.zeros(img.shape).astype(int)
     for i in range(img.shape[0]):
         for j in range(img.shape[1]):
@@ -48,68 +47,45 @@ def yokoiNumber(img):
     return result
 ##############################################################################
 
-# Mark Interior Border #######################################################
-def markBorder(source):
-    height, width = source.shape
-    result = np.full(source.shape, ' ')
-    for i in range(height):
-        for j in range(width):
-            if source[i][j] == 255:
-                if (0 <= i < height) and (0 <= j+1 < width) and (source[i][j] == source[i][j+1]):
-                    h1 = source[i][j]
-                else:
-                    h1 = 'b'
-                if (0 <= i-1 < height) and (0 <= j < width) and (h1 == source[i-1][j]):
-                    h2 = h1
-                else:
-                    h2 = 'b'
-                if (0 <= i < height) and (0 <= j-1 < width) and (h2 == source[i][j-1]):
-                    h3 = h2
-                else:
-                    h3 = 'b'
-                if (0 <= i+1 < height) and (0 <= j < width) and (h3 == source[i+1][j]):
-                    h4 = h3
-                else:
-                    h4 = 'b'
-                if (h4 != 'b'):
-                    f = 'i'
-                else:
-                    f = 'b'
-                result[i][j] = f
-    return result
-##############################################################################
-
 # Mark Pair Relationship Functions ###########################################
-def markPair(border):
-    height, width = border.shape
-    result = np.full(border.shape, ' ')
-    for i in range(height):
-        for j in range(width):
-            if (border[i][j] != ' '):
-                hcount = 0
-                if (0 <= j+1 < width) and (border[i][j+1] == 'i'):
-                    hcount += 1
-                if (0 <= i-1 < height) and (border[i-1][j] == 'i'):
-                    hcount += 1
-                if (0 <= j-1 < width) and (border[i][j-1] == 'i'):
-                    hcount += 1
-                if (0 <= i+1 < height) and (border[i+1][j] == 'i'):
-                    hcount += 1
-                if (hcount < 1) or (border[i][j] != 'b'):
-                    result[i][j] = 'q'
-                elif (hcount >= 1) and (border[i][j] == 'b'):
-                    result[i][j] = 'p'
-    return result
+def markPair(img):
+    pad = np.zeros((img.shape[0]+2, img.shape[1]+2), dtype=int)
+    pad[1:-1, 1:-1] = img
+    pair_img = np.zeros(img.shape, dtype=int)
+    for i in range(1, pad.shape[0]-1):
+        for j in range(1, pad.shape[1]-1):
+            if(pad[i][j] != 1):
+                pair_img[i-1][j-1] = 0
+            elif (pad[i][j+1] == 1 or pad[i-1][j] == 1 or pad[i][j-1] == 1 or pad[i+1][j] == 1):
+                pair_img[i-1][j-1] = 1
+    return pair_img
 ##############################################################################
 
 # Thinning ###################################################################
-def thin(yokoi, pair, down):
-    result = down.copy().astype(int)
-    for i in range(yokoi.shape[0]):
-        for j in range(yokoi.shape[1]):
-            if (yokoi[i][j] == 1) and (pair[i][j] == 'p'):
-                result[i][j] = 0
-    return result
+def hShrink(b, c, d, e):
+    if (b == c) and (b != d or b != e):
+        return 1
+    else:
+        return 0
+
+def thinning(img, marked):
+    pad = np.zeros((img.shape[0]+2, img.shape[1]+2), dtype=int)
+    pad[1:-1, 1:-1] = img
+    thinned_img = np.zeros(img.shape, dtype=int)
+    for i in range(1, pad.shape[0]-1):
+        for j in range(1, pad.shape[1]-1):
+            if pad[i][j] == 0:
+                continue
+            a1 = hShrink(pad[i][j], pad[i][j+1], pad[i-1][j+1], pad[i-1][j])
+            a2 = hShrink(pad[i][j], pad[i-1][j], pad[i-1][j-1], pad[i][j-1])
+            a3 = hShrink(pad[i][j], pad[i][j-1], pad[i+1][j-1], pad[i+1][j])
+            a4 = hShrink(pad[i][j], pad[i+1][j], pad[i+1][j+1], pad[i][j+1])
+            if ((a1+a2+a3+a4) == 1 and marked[i-1][j-1] == 1):
+                thinned_img[i-1][j-1] = 0
+                pad[i][j] = 0
+            else:
+                thinned_img[i-1][j-1] = pad[i][j]
+    return thinned_img
 ##############################################################################
 
 img = cv2.imread("lena.bmp", cv2.IMREAD_GRAYSCALE)
@@ -137,14 +113,12 @@ cv2.imwrite("res/downsampled.bmp", down)
 
 iterations = 1
 while True:
-    border = markBorder(down)
-    pair = markPair(border)
     yokoi = yokoiNumber(down)
-    result = thin(yokoi, pair, down)
+    pair = markPair(yokoi)
+    result = thinning(down, pair)
     # Break if same image, continue otherwise
     if not(np.bitwise_xor(result, down).any()):
         break
-    np.savetxt("res/borderInterior_" + str(iterations) + ".txt", border, delimiter='', fmt='%s')
     np.savetxt("res/pairRelationship_" + str(iterations) + ".txt", pair, delimiter='', fmt='%s')
     np.savetxt("res/yokoiNumber_" + str(iterations) + ".txt", yokoi, delimiter='', fmt='%s')
     cv2.imwrite("res/thinning_" + str(iterations) + ".bmp", result)
