@@ -7,24 +7,21 @@ def padding(source, pad):
     return cv2.copyMakeBorder(source, top=pad, bottom=pad, left=pad, right=pad, borderType=cv2.BORDER_REPLICATE)
 
 def robert(source, threshold):
+    padded = padding(source, 1)
     result = np.zeros(source.shape, dtype=int)
-    height, width = result.shape
-    for i in range(height):
-        for j in range(width):
+    for i in range(1, padded.shape[0]-1):
+        for j in range(1, padded.shape[1]-1):
             box = []
             for x in range(2):
                 for y in range(2):
                     xdest = i + x
                     ydest = j + y
-                    if (xdest < height) and (ydest < width):
-                        box.append(source[xdest][ydest])
-                    else:
-                        box.append(source[i][j])
+                    box.append(padded[xdest][ydest])
             r1 = -int(box[0]) + int(box[3])
             r2 = -int(box[1]) + int(box[2])
             gradient = ((r1**2) + (r2**2)) ** 0.5
             if gradient < threshold:
-                result[i][j] = 255
+                result[i-1][j-1] = 255
     return result
 
 def prewitt(source, threshold):
@@ -132,6 +129,12 @@ def robinson(source, threshold):
 def nevatiababu(source, threshold):
     padded = padding(source, 2)
     result = np.zeros(source.shape, dtype=int)
+    n0_mat = [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 0, 0, 0, 0, 0, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100]
+    n1_mat = [100, 100, 100, 100, 100, 100, 100, 100, 78, -32 ,100, 92, 0, -92, -100,32, -78, -100, -100, -100,-100, -100, -100, -100, -100]
+    n2_mat = [100, 100, 100, 32, -100, 100, 100, 92, -78, -100,100, 100, 0, -100, -100,100, 78, -92, -100, -100,100, -32, -100, -100, -100]
+    n3_mat = [-100, -100, 0, 100, 100, -100, -100, 0, 100, 100,-100, -100, 0, 100, 100,-100, -100, 0, 100, 100,-100, -100, 0, 100, 100]
+    n4_mat = [-100, 32, 100, 100, 100, -100, -78, 92, 100, 100,-100, -100, 0, 100, 100,-100, -100, -92, 78, 100,-100, -100, -100, -32, 100]
+    n5_mat = [100, 100, 100, 100, 100, -32, 78, 100, 100, 100,-100, -92, 0, 92, 100,-100, -100, -100, -78, 32,-100, -100, -100, -100, -100]
     for i in range(2, padded.shape[0]-2):
         for j in range(2, padded.shape[1]-2):
             box = []
@@ -140,24 +143,14 @@ def nevatiababu(source, threshold):
                     xdest = i + x - 2
                     ydest = j + y - 2
                     box.append(padded[xdest][ydest])
-            n0 = 100 * (int(box[0]) + int(box[1]) + int(box[2]) + int(box[3]) + int(box[4]) + int(box[5]) + int(box[6]) + int(box[7]) + int(box[8]) + int(box[9]))
-            n0 += -100 * (int(box[15]) + int(box[16]) + int(box[17]) + int(box[18]) + int(box[19]) + int(box[20]) + int(box[21]) + int(box[22]) + int(box[23]) + int(box[24]))
-            
-            n1 = 100 * (int(box[0]) + int(box[1]) + int(box[2]) + int(box[3]) + int(box[4]) + int(box[5]) + int(box[6]) + int(box[7])) + (78*int(box[8])) + (-32*int(box[9])) + (100*int(box[10])) + (92*int(box[11]))
-            n1 += (-92*int(box[13])) - (100*int(box[14])) + (32*int(box[15])) - (78*int(box[16])) + (-100*(int(box[17])+int(box[18])+int(box[19])+int(box[20])+int(box[21])+int(box[22])+int(box[23])+int(box[24])))
-            
-            n2 = 100 * (int(box[0]) + int(box[1]) + int(box[2]) + int(box[5]) + int(box[6]) + int(box[10]) + int(box[11]) + int(box[15]) + int(box[20])) - (78*int(box[8])) + (32*int(box[3])) + (92*int(box[7]))
-            n2 += (-92*int(box[17])) - (32*int(box[21])) + (78*int(box[16])) + (-100*(int(box[4])+int(box[9])+int(box[13])+int(box[14])+int(box[18])+int(box[19])+int(box[22])+int(box[23])+int(box[24])))
-
-            n3 = -100 * (int(box[0]) + int(box[1]) + int(box[5]) + int(box[6]) + int(box[10]) + int(box[11]) + int(box[15]) + int(box[16]) + int(box[20]) + int(box[21]))
-            n3 += 100 * (int(box[3]) + int(box[4]) + int(box[8]) + int(box[9]) + int(box[13]) + int(box[14]) + int(box[18]) + int(box[19]) + int(box[23]) + int(box[24]))
-
-            n4 = -100 * (int(box[0]) + int(box[5]) + int(box[10]) + int(box[11]) + int(box[15]) + int(box[16]) + int(box[20]) + int(box[21]) + int(box[22])) - (78*int(box[6])) + (32*int(box[2])) + (92*int(box[7]))
-            n4 += (-92*int(box[17])) - (32*int(box[23])) + (78*int(box[18])) + (100*(int(box[2])+int(box[3])+int(box[4])+int(box[8])+int(box[9])+int(box[13])+int(box[14])+int(box[19])+int(box[24])))
-
-            n5 = 100 * (int(box[0]) + int(box[1]) + int(box[2]) + int(box[3]) + int(box[4]) + int(box[7]) + int(box[8]) + int(box[9]) + int(box[14])) + (78*int(box[6])) - (32*int(box[5])) - (92*int(box[11]))
-            n5 += (92*int(box[13])) + (32*int(box[19])) - (78*int(box[18])) - (100*(int(box[10])+int(box[15])+int(box[16])+int(box[17])+int(box[20])+int(box[21])+int(box[22])+int(box[23])+int(box[24])))
-
+            n0 = n1 = n2 = n3 = n4 = n5 = 0
+            for x in range(25):
+                n0 += (n0_mat[x] * box[x])
+                n1 += (n1_mat[x] * box[x])
+                n2 += (n2_mat[x] * box[x])
+                n3 += (n3_mat[x] * box[x])
+                n4 += (n4_mat[x] * box[x])
+                n5 += (n5_mat[x] * box[x])
             gradient = max(n0, n1, n2, n3, n4, n5)
             if gradient < threshold:
                 result[i-2][j-2] = 255
