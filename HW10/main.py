@@ -44,6 +44,7 @@ def laplacianMask(source, kernel, threshold):
             total = 0
             for x in range(len(kernel)):
                 total += (kernel[x] * box[x])
+            total = round(total, 2)     # to avoid floating point precision error
             # Insert to mask
             if total >= threshold:
                 result[i-1][j-1] = 1
